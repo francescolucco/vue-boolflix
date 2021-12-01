@@ -5,7 +5,8 @@
       <input 
         type="text" 
         placeholder="Inserisci un titolo"
-        v-model= "textSearch">
+        v-model= "textSearch"
+        @keyup.enter="$emit('titleSearch', textSearch)">
       <button 
         class="btn btn-success"
         @click="$emit('titleSearch', textSearch)">

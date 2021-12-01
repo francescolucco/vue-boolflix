@@ -33,7 +33,8 @@ export default {
   .card-film{
     height: 500px;
     width: 200px;
-    background-color: red;
+    // background-color: red;
+    border: 5px solid rgb(251, 188, 14);
     margin: 30px;
     padding: 20px;
     h1{
@@ -45,3 +46,34 @@ export default {
   }
 }
 </style>
+
+  //  methods:{
+  //    getAPI(){
+  //      if(this.titleToSend !== 'ww'){
+  //        axios.get('https://api.themoviedb.org/3/search/movie',{
+  //            params:{
+  //              api_key: '27d121d27b7dc4f651e4c2ccb0187202',
+  //              query: 'ritorno al futuro',
+  //              language: 'it-IT'
+  //            }
+  //          })
+  //        .then(r =>{
+  //          console.log(r.data.results);
+  //          this.filmsList = r.data.results;
+  //        })
+  //        .catch(e => {
+  //          console.log(e);
+  //        })
+  //      }
+  //    }
+  //  },
+    // computed:{
+    // lanchFunction(){
+    //     if(this.titleToSend !== ''){
+    //       return this.getAPI();
+    //     }
+    //   }
+    // },
+  //  mounted(){
+  //    this.getAPI();
+  //  }

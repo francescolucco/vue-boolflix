@@ -21,6 +21,7 @@ export default {
       apiKey: '27d121d27b7dc4f651e4c2ccb0187202',
       languageIt: '&language=it-IT',
       languageEn: '&language=en-US',
+      page: 'page=1000',
       filmsList: []
     }
   },
@@ -36,7 +37,7 @@ export default {
              params:{
                api_key: this.apiKey,
                query: this.titleToSend,
-               language: 'it-IT'
+               language: 'it-IT',
              }
            })
          .then(r =>{
