@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header @titleSearch="titleToSendApi"/>
-    <Main :filmsList="filmsList"/>
+    <Main 
+    :filmsList="filmsList"
+    :lenguageList="lenguageList"/>
 
   </div>
 </template>
@@ -22,7 +24,8 @@ export default {
       languageIt: '&language=it-IT',
       languageEn: '&language=en-US',
       page: 'page=1000',
-      filmsList: []
+      filmsList: [],
+      lenguageList: []
     }
   },
   components: {
@@ -43,6 +46,11 @@ export default {
          .then(r =>{
            console.log(r.data.results);
            this.filmsList = r.data.results;
+           this.filmsList.forEach(film=>{
+             this.lenguageList.push(film.original_language)
+           })
+           
+
          })
          .catch(e => {
            console.log(e);

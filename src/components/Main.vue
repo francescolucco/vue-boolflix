@@ -10,7 +10,19 @@
       <h2>Titolo originale:</h2>
       <h1>{{film.original_title}}</h1>
       <h2>Lingua:</h2>
-      <h1>{{film.original_language}}</h1>
+       <h1 v-if="lenguages">
+        {{film.original_language}}
+        </h1>
+        <div
+          class="box-img"
+          v-if="EnLenguage">
+          <img  src="../assets/img/united_kingdom_flags_flag_17079.png" alt="">
+        </div>
+        <div
+          class="box-img"
+          v-if="itLenguage">
+          <img  src="../assets/img/italy_flags_flag_17018.png" alt="">
+        </div>
       <h2>Voto:</h2>
       <h1>{{film.vote_average}}</h1>
     </div>
@@ -21,9 +33,47 @@
 
 export default {
    name: "Main",
-   props:{
-     filmsList: Array
+   data(){
+     return{
+       lenguages: false,
+       enLenguage: false,
+       itLenguages: false,
+     }
    },
+   props:{
+     filmsList: Array,
+     lenguageList: Array
+   },
+   methods:{
+    //  stampFlag(){
+    //    this.lenguageList.forEach(lenguage=>{
+    //      if(lenguage === 'en'){
+    //        this.enLenguage = true
+    //      }else if(lenguage === 'it'){
+    //        this.itLenguages = true
+    //      }else{
+    //        this.lenguages = true
+    //      }
+    //    })
+    //  }
+  },
+  computed:{
+         stampFlag(){
+       this.lenguageList.forEach(lenguage=>{
+         if(lenguage === 'en'){
+           this.enLenguage = true
+           return this.enLenguage
+         }else if(lenguage === 'it'){
+           this.itLenguages = true
+           return this.itLenguage
+         }else{
+           this.lenguages = true
+           return this.lenguage
+         }
+       })
+     }
+  }
+   
 }
 </script>
 
@@ -42,6 +92,14 @@ export default {
     }
     h2{
       color: rgb(251, 188, 14);
+    }
+    .box-img{
+      width: 100%;
+      text-align: center;
+      img{
+        width: 25%;
+      }
+
     }
   }
 }
