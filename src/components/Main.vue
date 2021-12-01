@@ -9,20 +9,17 @@
       <h1>{{film.title}}</h1>
       <h2>Titolo originale:</h2>
       <h1>{{film.original_title}}</h1>
+      <!-- LINGUA -->
       <h2>Lingua:</h2>
-       <h1 v-if="lenguages">
-        {{film.original_language}}
+
+       <h1>
+        <img  v-if="film.original_language === 'en'" :src="`https://flagcdn.com/24x18/gb-eng.png`" alt="" srcset="">
+        <img   v-else-if="film.original_language === 'cs'" :src="`https://flagcdn.com/24x18/cz.png`" alt="" srcset="">
+        <img   v-else-if="film.original_language !== 'en'" :src="`https://flagcdn.com/24x18/${film.original_language}.png`" alt="" srcset="">
+        <!-- <img v-if="availableFlags.includes(film.original_language)" :src="`https://flagcdn.com/24x18/${film.original_language}.png`" alt="" srcset=""> -->
+        <!-- <img v-if="this.lenguageList.includes(film.original_language)" :src="require(`../assets/img/${film.original_language}.png`)" alt="" srcset=""> -->
+        <div v-else>flag non trovata</div>
         </h1>
-        <div
-          class="box-img"
-          v-if="EnLenguage">
-          <img  src="../assets/img/united_kingdom_flags_flag_17079.png" alt="">
-        </div>
-        <div
-          class="box-img"
-          v-if="itLenguage">
-          <img  src="../assets/img/italy_flags_flag_17018.png" alt="">
-        </div>
       <h2>Voto:</h2>
       <h1>{{film.vote_average}}</h1>
     </div>
@@ -35,44 +32,12 @@ export default {
    name: "Main",
    data(){
      return{
-       lenguages: false,
-       enLenguage: false,
-       itLenguages: false,
+      //  availableFlags : ['it', 'en']
      }
    },
    props:{
      filmsList: Array,
-     lenguageList: Array
    },
-   methods:{
-    //  stampFlag(){
-    //    this.lenguageList.forEach(lenguage=>{
-    //      if(lenguage === 'en'){
-    //        this.enLenguage = true
-    //      }else if(lenguage === 'it'){
-    //        this.itLenguages = true
-    //      }else{
-    //        this.lenguages = true
-    //      }
-    //    })
-    //  }
-  },
-  computed:{
-         stampFlag(){
-       this.lenguageList.forEach(lenguage=>{
-         if(lenguage === 'en'){
-           this.enLenguage = true
-           return this.enLenguage
-         }else if(lenguage === 'it'){
-           this.itLenguages = true
-           return this.itLenguage
-         }else{
-           this.lenguages = true
-           return this.lenguage
-         }
-       })
-     }
-  }
    
 }
 </script>
@@ -93,14 +58,11 @@ export default {
     h2{
       color: rgb(251, 188, 14);
     }
-    .box-img{
-      width: 100%;
-      text-align: center;
-      img{
+    h1 img{
         width: 25%;
       }
 
-    }
+    
   }
 }
 </style>

@@ -2,8 +2,7 @@
   <div>
     <Header @titleSearch="titleToSendApi"/>
     <Main 
-    :filmsList="filmsList"
-    :lenguageList="lenguageList"/>
+    :filmsList="filmsList"/>
 
   </div>
 </template>
@@ -21,11 +20,10 @@ export default {
       titleToSend: '',
       urlTheMovied: 'https://api.themoviedb.org/3/search/movie',
       apiKey: '27d121d27b7dc4f651e4c2ccb0187202',
-      languageIt: '&language=it-IT',
-      languageEn: '&language=en-US',
-      page: 'page=1000',
       filmsList: [],
-      lenguageList: []
+
+      urlSeriesTv: 'https://api.themoviedb.org/3/search/tv',
+      seriesList: [],
     }
   },
   components: {
@@ -36,6 +34,8 @@ export default {
     titleToSendApi(text){
       this.titleToSend = text;
        if(this.titleToSend !== ''){
+
+         //  chiamata FILM ********************§§§§§
          axios.get(this.urlTheMovied,{
              params:{
                api_key: this.apiKey,
@@ -46,15 +46,30 @@ export default {
          .then(r =>{
            console.log(r.data.results);
            this.filmsList = r.data.results;
-           this.filmsList.forEach(film=>{
-             this.lenguageList.push(film.original_language)
+         })
+         .catch(e => {
+           console.log(e);
+         })
+        //  ********************************§§§§§§§
+
+
+        //  chiamata SERIE TV **************§§§§§§§
+         axios.get(this.urlSeriesTv,{
+           params:{
+             api_key: this.apiKey,
+               query: this.titleToSend,
+               language: 'it-IT',
+             }
            })
-           
+         .then(r =>{
+           console.log(r.data.results);
+           this.seriesList = r.data.results;
 
          })
          .catch(e => {
            console.log(e);
          })
+        //  ********************************§§§§§§§
        }
     }
   }
@@ -65,3 +80,14 @@ export default {
 <style lang="scss">
   @import "./assets/styles/general";
 </style>
+
+           //  this.filmsList.forEach(film=>{
+ 
+           //    if(film.original_language === 'en'){
+           //      film.original_language = 'gb-eng'
+           //    }
+           //    this.lenguageList=[];
+           //     this.lenguageList.push(film.original_language);
+              
+           //    console.log(this.lenguageList);
+           //  })
