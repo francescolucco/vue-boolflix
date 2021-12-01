@@ -2,7 +2,8 @@
   <div>
     <Header @titleSearch="titleToSendApi"/>
     <Main 
-    :filmsList="filmsList"/>
+    :filmsList="filmsList"
+    :seriesList="seriesList"/>
 
   </div>
 </template>
@@ -80,14 +81,3 @@ export default {
 <style lang="scss">
   @import "./assets/styles/general";
 </style>
-
-           //  this.filmsList.forEach(film=>{
- 
-           //    if(film.original_language === 'en'){
-           //      film.original_language = 'gb-eng'
-           //    }
-           //    this.lenguageList=[];
-           //     this.lenguageList.push(film.original_language);
-              
-           //    console.log(this.lenguageList);
-           //  })
