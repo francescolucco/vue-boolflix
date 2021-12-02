@@ -41,7 +41,7 @@ export default {
   font-size: 80px!important;
   font-weight: 700!important;
   text-transform: uppercase;
-  text-shadow: 0px 2px 2px black;
+  text-shadow: 0px 2px 2px rgb(0, 0, 0);
   display: block;
   width: 100%;
   padding: 40px 0 40px 300px;

@@ -52,12 +52,9 @@ export default {
          .then(r =>{
           //  console.log(r.data.results);
            this.filmsList = r.data.results;
-           this.filmsList.forEach(stars=>{
-            let numStars = Math.round((parseInt(stars.vote_average)*5)/10);
-            stars.vote_average = [];
-            for(let i = 0; i < numStars; i++){
-              stars.vote_average.push(i)
-            }
+           this.filmsList.forEach(film=>{
+            let numStars = Math.round((parseInt(film.vote_average)*5)/10);
+            film.vote_average = numStars;
            })
            console.log(this.filmsList);
          })
@@ -78,12 +75,9 @@ export default {
         })
       .then(r =>{
         this.seriesList = r.data.results;
-        this.seriesList.forEach(stars=>{
-          let numStars = Math.round((parseInt(stars.vote_average)*5)/10);
-          stars.vote_average = [];
-          for(let i = 0; i < numStars; i++){
-            stars.vote_average.push(i)
-          }
+          this.seriesList.forEach(serie=>{
+          let numStars = Math.round((parseInt(serie.vote_average)*5)/10);
+          serie.vote_average = numStars;
         })
         console.log(this.seriesList);
       })
