@@ -38,9 +38,9 @@
 <style lang="scss">
   .flip-card {
     background-color: transparent;
-    width: 300px;
-    height: 300px;
-    perspective: 1000px;
+    width: 450px;
+    height: 674px;
+    perspective: 3000px;
   }
   .flip-card-inner {
     position: relative;
@@ -53,6 +53,8 @@
   }
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+      background-color: #000000;
+
   }
   .flip-card-front, .flip-card-back {
     position: absolute;
@@ -66,7 +68,7 @@
     color: black;
   }
   .flip-card-back {
-    background-color: #2980b9;
+    background-color: #000000;
     color: white;
     transform: rotateY(180deg);
   }
