@@ -20,7 +20,7 @@
             <div class="box-voto d-flex justify-content-center align-items-center">
                <h2>Voto:</h2>
                <div
-                  v-if="film.vote_average[0] !== ''" 
+                  v-if="film.vote_average > 0" 
                   class="box-stars d-flex justify-content-center align-items-center">
                   <h1
                   v-for="(star, index) in film.vote_average"
@@ -32,7 +32,6 @@
                   class="voto-undefaund" 
                   v-else>non presente
                </div>
-               <h1>{{film.vote_average}}</h1>
             </div>
           </div>
         </div>
@@ -77,10 +76,9 @@
     backface-visibility: hidden;
   }
   .flip-card-front {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(218, 28, 28);
     color: black;
     overflow: hidden;
-   //  object-fit: cover;
     img{
        object-fit: cover;
        width: 100%;
@@ -89,7 +87,7 @@
     }
   }
   .flip-card-back {
-    background-color: #000000;
+    background-color: #0f0ff8;
     color: white;
     transform: rotateY(180deg);
   }

@@ -1,6 +1,6 @@
 <template>
   <header class="d-flex justify-content-around align-items-center">
-    <img src="../assets/logo.png" alt="">
+    <img src="../assets/img/logo-netflix.png" alt="">
     <div class="search">
       <input 
         type="text" 
@@ -30,9 +30,9 @@ export default {
 <style lang="scss">
 header{
   height: 80px;
-  background-color: rgb(4, 50, 110);
+  background-color: rgb(0, 0, 0);
   img{
-    height: 100%;
+    height: 120%;
   }
   .search{
     input{

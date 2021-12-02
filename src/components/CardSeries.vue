@@ -19,7 +19,19 @@
               <div v-else>flag non trovata</div>
             </h1>
             <h2>Voto:</h2>
-            <h1>{{serie.vote_average}}</h1>
+            <div
+               v-if="serie.vote_average > 0" 
+               class="box-stars d-flex justify-content-center align-items-center">
+               <h1
+               v-for="(star, index) in serie.vote_average"
+               :key="index">
+                  <i class="fa-solid fa-star"></i>
+               </h1>
+            </div>
+            <div
+               class="voto-undefaund" 
+               v-else>non presente
+            </div>
           </div>
         </div>
       </div>
