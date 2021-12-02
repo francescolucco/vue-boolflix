@@ -33,9 +33,15 @@
                   v-else>non presente
                </div>
             </div>
-          </div>
-        </div>
+            <div 
+               v-if="film.overview !== ''"
+               class="box-trama">
+               <h2>Trama:</h2>
+               <h1>{{film.overview}}</h1>
+            </div>
+         </div>
       </div>
+   </div>
 </template>
 
 <script>
@@ -55,6 +61,7 @@
     width: 450px;
     height: 674px;
     perspective: 3000px;
+   margin-bottom: 70px;
   }
   .flip-card-inner {
     position: relative;
@@ -63,7 +70,7 @@
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.561);
+    box-shadow: 0 4px 8px 0 rgb(31, 20, 20);
   }
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
@@ -90,24 +97,40 @@
     background-color: #0f0ff8;
     color: white;
     transform: rotateY(180deg);
-  }
-  .card-film{
-    h1{
-      font-size: 20px!important;
-    }
-    h2{
-      color: rgb(251, 188, 14);
-    }
-    h1 img{
-      width: 60%;
+    padding: 25px;
+   overflow-y: scroll;
+      ::-webkit-scrollbar {
+      width: 12px;
       }
-    i{
-      margin-left: 5px;
-      color: yellow!important;
+   
+      ::-webkit-scrollbar-track {
+         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+         border-radius: 10px;
       }
-   .voto-undefaund{
-      color: white;
-   }
+   
+      ::-webkit-scrollbar-thumb {
+         border-radius: 10px;
+         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+      }
+      h1{
+         font-size: 20px!important;
+      }
+      h2{
+         color: rgb(251, 188, 14);
+      }
+      .card-film h1 img {
+         width: 20%;
+      }
+      i{
+         margin-left: 5px;
+         color: yellow!important;
+         }
+      .voto-undefaund{
+         color: white;
+      }
+      .box-trama{
+         // overflow-y: scroll;
+      }
   }
 
 </style>

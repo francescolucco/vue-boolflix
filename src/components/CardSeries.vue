@@ -32,6 +32,12 @@
                class="voto-undefaund" 
                v-else>non presente
             </div>
+            <div 
+               v-if="serie.overview !== ''"
+               class="box-trama">
+               <h2>Trama:</h2>
+               <h1>{{serie.overview}}</h1>
+            </div>
           </div>
         </div>
       </div>
