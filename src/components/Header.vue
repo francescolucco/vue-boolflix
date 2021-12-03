@@ -1,6 +1,8 @@
 <template>
   <header class="d-flex justify-content-around align-items-center">
-    <img src="../assets/img/logo-netflix.png" alt="">
+    <img 
+    @click="$emit('returnHome')"
+    src="../assets/img/logo-netflix.png" alt="">
     <div class="search">
       <input 
         type="text" 

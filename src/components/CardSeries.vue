@@ -36,7 +36,7 @@
                v-if="serie.overview !== ''"
                class="box-trama">
                <h2>Trama:</h2>
-               <h1>{{serie.overview}}</h1>
+               <h1 class="overview">{{serie.overview}}</h1>
             </div>
           </div>
         </div>
@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style lang="scss">
+.card-film .flip-card-inner .flip-card-back h1 img {
+    width: 20%;
+}
   .flip-card {
     background-color: transparent;
     width: 450px;
@@ -101,6 +104,10 @@ export default {
     h1 img{
       width: 60%;
       }
+    .overview{
+    max-height: 190px;
+    overflow-y: scroll;
+  }
   }
 
 

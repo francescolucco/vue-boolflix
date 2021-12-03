@@ -32,11 +32,15 @@
           <h2>Voto:</h2>
           <div
             v-if="film.vote_average > 0"
-            class="box-stars d-flex justify-content-center align-items-center">
+            class="box-stars d-flex justify-content-center align-items-center"
+          >
             <h1 v-for="(star, index) in film.vote_average" :key="index">
               <i class="fa-solid fa-star"></i>
             </h1>
-            <h1 v-for="(star, index) in starsVuote(film.vote_average)" :key="index + 10">
+            <h1
+              v-for="(star, index) in starsVuote(film.vote_average)"
+              :key="index + 10"
+            >
               <i class="fa-regular fa-star"></i>
             </h1>
           </div>
@@ -44,7 +48,7 @@
         </div>
         <div v-if="film.overview !== ''" class="box-trama">
           <h2>Trama:</h2>
-          <h1>{{ film.overview }}</h1>
+          <h1 class="overview">{{ film.overview }}</h1>
         </div>
       </div>
     </div>
@@ -62,16 +66,19 @@ export default {
   props: {
     film: Object,
   },
-  methods:{
-    starsVuote(num){
+  methods: {
+    starsVuote(num) {
       let numStarsVuote = parseInt(5 - num);
-      return numStarsVuote
-    }
-  }
+      return numStarsVuote;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scope>
+.card-film .flip-card-inner .flip-card-back h1 img {
+  width: 20%;
+}
 .flip-card {
   background-color: transparent;
   width: 450px;
@@ -114,7 +121,7 @@ export default {
   color: white;
   transform: rotateY(180deg);
   padding: 25px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 5px !important;
   }
@@ -144,8 +151,12 @@ export default {
   .voto-undefaund {
     color: white;
   }
-  .fa-regular{
+  .fa-regular {
     color: yellow;
+  }
+  .overview {
+    max-height: 200px;
+    overflow-y: scroll;
   }
 }
 </style>
