@@ -57,10 +57,27 @@ export default {
           console.log(e);
         });
     },
+//  ho creato una chiamta API per gestire il caricamento dei film e delle serie pi+ popolari. Gestisco le due chiamate con la stessa funzione. utilizzo gli stessi array delle chiamta API delle ricerche, in  modo che alla ricerca gli array vengano svuotati e ripopolati
+        getApipopular(type) {
+      axios
+        .get('https://api.themoviedb.org/3/'+type+'/popular?api_key=27d121d27b7dc4f651e4c2ccb0187202')
+        .then((r) => {
+          this[type] = r.data.results;
+          this[type].forEach((film) => {
+            let numStars = Math.round((parseInt(film.vote_average) * 5) / 10);
+            film.vote_average = numStars;
+          });
+          console.log(this[type]);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
   },
     mounted() {
-      this.getApi('movie');
-      this.getApi('tv');
+
+      this.getApipopular('movie');
+      this.getApipopular('tv');
     },
 
 };
