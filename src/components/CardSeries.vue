@@ -20,17 +20,17 @@
             </h1>
             <h2>Voto:</h2>
             <div
-               v-if="serie.vote_average > 0" 
-               class="box-stars d-flex justify-content-center align-items-center">
-               <h1
-               v-for="(star, index) in serie.vote_average"
-               :key="index">
-                  <i class="fa-solid fa-star"></i>
-               </h1>
+              v-if="serie.vote_average > 0"
+              class="box-stars d-flex justify-content-center align-items-center">
+              <h1>
+  <!-- cliclo con la logica della classe dinamica: molto più compatta e semplice rispetto alla funzione della card movies -->
+                <i
+                v-for="(star, index) in 5" :key="index" 
+                class="fa-star"
+                :class="index < Math.round(serie.vote_average/2) ? 'fa-solid' : 'fa-regular'"></i>
+              </h1>
             </div>
-            <div
-               class="voto-undefaund" 
-               v-else>non presente
+            <div class="voto-undefaund" v-else>non presente
             </div>
             <div 
                v-if="serie.overview !== ''"
@@ -45,11 +45,12 @@
 
 <script>
 
-   export default {
-      name: 'CardSeries',
-      props:{
-         serie: Object
-      }
+export default {
+  name: 'CardSeries',
+  props:{
+      serie: Object
+  },
+
 }
 </script>
 
